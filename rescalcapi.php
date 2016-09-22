@@ -15,7 +15,22 @@
 			$thirdcolor=$_POST['thirdcolor'];
 			$fourthcolor=$_POST['fourthcolor'];
 			$hasFiveRings=$_POST['hasFiveRings];
-			$fithcolor=$_POST['fithcolor'];
+			
+			if ($hasFiveRings == true) {
+				$fithcolor=$_POST['fithcolor'];
+			
+			}
+			
+			
+			//Get Value of firstColor
+			
+			function setFirstColorValue($color){
+				
+				
+				
+				return $colorvalue;
+				}
+			
 			
 			
 		?>
