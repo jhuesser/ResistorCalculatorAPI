@@ -1,4 +1,8 @@
-# WARNING: PROJECT IS NOT FINISED YET AND IS NOT WORKING!!
+# Working status
+
+- Syntax is valiaded.
+- Script is not tested.
+
 
 
 
