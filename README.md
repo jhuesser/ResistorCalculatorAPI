@@ -12,11 +12,11 @@ This is an API to calculate the ohm value of resistors with the color code given
 
 # FAQ
 
-## Do I need to colone the repo, to make my solution running?
+## Do I need to clone the repo, to make my solution running?
 No. If you just want to create a solution, just make your API calls with HTTP POST to ```https://api.jhuesser.ch/rescalcapi.php```
 
 ## What does the result looks like?
-You will get a header and a body. In the body the result is between the <RESULT></RESULT> tags. If you have a better soloution just let me know.
+You will get a header and a body. In the body the result is between the ```<RESULT></RESULT>``` tags. If you have a better soloution just let me know.
 
 ## What about translations?
 Your solotion can have any language! Just the HTTP POST values need to be english color names, but in your UI you can show it however you want. The result is between to tags (see above) and contains only the numbers you need. There is an standard prompt in english if you set ```resultInText``` to ```1``` .
@@ -34,8 +34,26 @@ Name | Description | requiered
 ```hasFiveRings``` | Set to ```1``` if the resistor has 5 rings  | no
 ```resultInText``` | Set to ```1``` if you want the standard english output | yes
 
+## accepted values:
+
+- no-color
+- silver
+- gold
+- black
+- brown
+- rot
+- orange
+- yellow
+- green
+- blue
+- violett
+- grey
+- white
+
 ## Example call:
-```https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0```
+```
+https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
+```
 
 ## Result from above:
 ```html
