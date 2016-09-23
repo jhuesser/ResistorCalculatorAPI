@@ -2,7 +2,7 @@
 
 - Syntax is valiaded.
 - Calculation works.
-- Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1))).
+- Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1)).
 
 
 
