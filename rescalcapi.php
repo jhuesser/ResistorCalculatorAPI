@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<?php
-		error_reporting(E_ALL);
+		
 			
 			//Initalize values
 			$firstcolor=$_GET['firstcolor'];
@@ -320,7 +320,7 @@
 				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				$RESULT = caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue, $hasFiveRings, $resultInText);
 				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
-				echo $RESULT;
+				?><RESULT><?php echo $RESULT;?></RESULT><?php
 			
 		?>
 	</body>
