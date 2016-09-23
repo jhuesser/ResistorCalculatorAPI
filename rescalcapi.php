@@ -8,23 +8,27 @@
 	</head>
 	<body>
 		<?php
+		error_reporting(E_ALL);
 			
 			//Initalize values
-			$firstcolor=$_POST['firstcolor'];
-			$secondcolor=$_POST['secondcolor'];
-			$thirdcolor=$_POST['thirdcolor'];
-			$fourthcolor=$_POST['fourthcolor'];
-			$hasFiveRings=$_POST['hasFiveRings'];
+			$firstcolor=$_GET['firstcolor'];
+			$secondcolor=$_GET['secondcolor'];
+			$thirdcolor=$_GET['thirdcolor'];
+			$fourthcolor=$_GET['fourthcolor'];
+			$hasFiveRings=$_GET['hasFiveRings'];
 			if ($hasFiveRings == 1 ) {
-				$fifthcolor=$_POST['fithcolor'];
+				$fifthcolor=$_GET['fifthcolor'];
 			
-			}
-			$resultInText=$_POST['resultInText'];
+			} else {
+				$fifthvalue=0;
+				
+				}
+			$resultInText=$_GET['resultInText'];
 			
 			
 			//check if error occured
 			
-			function checkIfError($hasError){
+			function checkIfError($hasError, $errorNmb, $errorMsg){
 				
 				if ($hasError == 1){
 					exit("Error: " . $errorNmb . " " . $errorMsg);
@@ -66,9 +70,10 @@
 						$errorMsg = "The color " . $color . " can't be a color at this position";
 						$errorNmb = "101";
 						$hasError = 1;
+						$colorvalue=0;
 					
 					} 
-				
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				return $colorvalue;
 				}
 			
@@ -82,8 +87,9 @@
 						
 						}
 				
-				
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				return $colorvalue;
+				
 				}
 				
 				
@@ -130,9 +136,9 @@
 								$errorMsg = "The color " . $color . " can't be a color at this position";
 								$errorNmb = "101";
 								$hasError = 1;
-							
+								$colorvalue=0;
 							}
-				
+					checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 					return $colorvalue;
 				}
 				
@@ -140,7 +146,7 @@
 				
 				
 			
-			function setThirdColorValue($color) {
+			function setThirdColorValue($color, $hasFiveRings) {
 				
 				if ($hasFiveRings == 1){
 					
@@ -154,16 +160,17 @@
 					$errorMsg = "The result could not be generated. Maybe your resultInText request is corrupt.";
 					$errorNmb = "201";
 					$hasError = 1;
+					$colorvalue=0;
 							
 							}
-				
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				
 				return $colorvalue;
 				}
 				
 				
 			
-			function setFourthColorValue($color) {
+			function setFourthColorValue($color, $hasFiveRings) {
 				
 				if ($hasFiveRings == 1){
 					
@@ -186,15 +193,17 @@
 							$errorMsg = "The color " . $color . " can't be a color at this position";
 							$errorNmb = "101";
 							$hasError = 1;
+							$colorvalue=0;
 					}
 				} else{
 					$errorMsg = "The resultå could not be generated. Maybe your resultInText request is corrupt.";
 					$errorNmb = "201";
 					$hasError = 1;
+					$colorvalue=0;
 						
 						}
 				
-				
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				return $colorvalue;
 				
 				}
@@ -217,15 +226,16 @@
 							$errorMsg = "The color " . $color . " can't be a color at this position";
 							$errorNmb = "101";
 							$hasError = 1;
+							$colorvalue=0;
 							
 						
 						}
-						
+						checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 						return $colorvalue;
 					
 					}
 				
-			function caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue){
+			function caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue, $hasFiveRings, $resultInText){
 				
 				if ($hasFiveRings == 1 ){
 					
@@ -243,6 +253,7 @@
 								$errorMsg = "The result could not be generated. Maybe your resultInText request is corrupt.";
 								$errorNmb = "201";
 								$hasError = 1;
+								$colorvalue=0;
 								
 								}
 					
@@ -262,6 +273,7 @@
 								$errorMsg = "The result could not be generated. Maybe your resultInText request is corrupt.";
 								$errorNmb = "201";
 								$hasError = 1;
+								$colorvalue=0;
 								
 								}
 						
@@ -269,39 +281,45 @@
 							$errorMsg = "The result could not be calculated. Maybe your hasFiveRings request is corrupt.";
 							$errorNmb = "202";
 							$hasError = 1;
+							$colorvalue=0;
 							
 							
 							
 							}
+							checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 						
 				
 				return $RESULT;
 				
 				}
-				checkIfError($hasError);
+				$hasError=0;
+				$errorNmb=0;
+				$errorMsg=0;
+				
 				$firstvalue=setFirstColorValue($firstcolor);
-				checkIfError($hasError);
+				
 				$secondvalue=setSecondColorValue($secondcolor);
-				checkIfError($hasError);
-				$thirdvalue=setThirdColorValue($thirdcolor);
-				checkIfError($hasError);
-				$fourthvalue=setFourthColorValue($fourthcolor);
-				checkIfError($hasError);
+				
+				$thirdvalue=setThirdColorValue($thirdcolor, $hasFiveRings);
+				
+				$fourthvalue=setFourthColorValue($fourthcolor, $hasFiveRings);
+				
 				if ($hasFiveRings == 1){
 					$fifthvalue=setFifthColorValue($fifthcolor);
-					checkIfError($hasError);
+					
 				} elseif ($hasFiveRings == 0){
 					$fithvalue=0;
-					checkIfError($hasError);
+					
 					} else {
 						$errorMsg = "The result could not be calculated. Maybe your hasFiveRings request is corrupt.";
 						$errorNmb = "202";
-						$hasError = 1;	
+						$hasError = 1;
+						$colorvalue=0;	
 						
 						}
-				checkIfError($hasError);
-				$RESULT = caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue);
-				checkIfError($hasError);
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
+				$RESULT = caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue, $hasFiveRings, $resultInText);
+				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				echo $RESULT;
 			
 		?>
