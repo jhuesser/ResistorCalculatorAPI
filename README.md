@@ -2,7 +2,7 @@
 
 - Syntax is valiaded.
 - Calculation works.
-- Error Handling doesnt work. (See #1).
+- Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1))).
 
 
 
@@ -33,3 +33,50 @@ Name | Description | requiered
 ```fifthcolor``` | The 5th color | depends on ```hasFiveRings```
 ```hasFiveRings``` | Set to ```1``` if the resistor has 5 rings  | no
 ```resultInText``` | Set to ```1``` if you want the standard english output | yes
+
+## Example call:
+```https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0```
+
+## Result from above:
+```html
+<!doctype html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+				<title>Resistor Calculator API</title>
+			</head>
+			<body>
+				<RESULT>230000:+/- 10%</RESULT>
+			</body>
+		</html>
+```
+# Error Codes
+
+## Quick overview
+
+If the Error handling is working in the future, this is an overview for the error codes.
+
+- 1xx User error. The user made a request, which resulted in an error. this mostly happens in your solution.
+- 2xx Developer error. This often happens when you made an error. Mostly a parameter is corrupt in your request (or even missing)
+- 3xx API error. An error that happens server side. currently not implemented.	
+
+## User errors
+
+Error number | Error message | Descriptoon
+-------------|---------------|------------
+101 | The color " . $color . " can't be a color at this position | The API compares the color you give it with a switch case. If the switch fails, this is the error. So your color is invalid, or the color can't be at this position. It will prompt you the color in question.
+
+
+## Developer errors
+
+Error number | Error message | Descriptoon
+-------------|---------------|------------
+201 | The result could not be generated. Maybe your resultInText request is corrupt. | This error shows up, if the API tests which value ```resultInText``` has. If it's not ```0``` or ```1``` this happens.
+202 | The result could not be calculated. Maybe your hasFiveRings request is corrupt. | If the API checks if the ```hasFiveRings``` value is ```0``` or ```1``` and it's neither of both, this error will show up.
+
+
+## API errors
+Currently not implemented. will take a look if the error handeling works.
+
+Error number | Error message | Descriptoon
+-------------|---------------|------------
