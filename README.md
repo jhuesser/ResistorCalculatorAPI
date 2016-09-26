@@ -2,7 +2,7 @@
 
 - Syntax is valiaded.
 - Calculation works.
-- Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1)).
+- Error Handling doesnt work. (See [#1](https://github.com/widerstandsberechner/ResistorCalculatorAPI/issues/1)).
 
 
 
@@ -13,14 +13,14 @@ This is an API to calculate the ohm value of resistors with the color code given
 # FAQ
 
 ## Do I need to clone the repo, to make my solution running?
-No. If you just want to create a solution, just make your API calls with HTTP POST to ```https://api.jhuesser.ch/rescalcapi.php```
+No. If you just want to create a solution, just make your API calls with HTTP POST to ```https://api.widerstandsberechner.ch/api.php```
 
 ## What does the result looks like?
 If you set ```resultInText```to ```0```, you will recive the result in json. If you set it to ```1``` You recive the standard answer as plain text.
 
 This
 ```
-https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
+https://api.widerstandsberechner.ch/api.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
 ```
 results in this:
 
@@ -33,7 +33,7 @@ results in this:
 ```
  and this:
  ```
- https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=1
+ https://api.widerstandsberechner.ch/api.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=1
  
 ```
 
@@ -77,7 +77,7 @@ Name | Description | requiered
 
 ## Example call:
 ```
-https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
+https://api.widerstandsberechner.ch/api.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
 ```
 
 ## Result from above:
