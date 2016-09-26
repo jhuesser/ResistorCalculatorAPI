@@ -48,7 +48,7 @@
 					case "blue":
 						$colorvalue=6;
 						break;
-					case "violett":
+					case "purple":
 						$colorvalue=7;
 						break;
 					case "grey":
@@ -114,7 +114,7 @@
 							case "blue":
 								$colorvalue=1000000;
 								break;
-							case "violett":
+							case "purple":
 								$colorvalue=10000000;
 								break;
 							case "grey":
@@ -312,6 +312,8 @@
 				$RESULT = caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue, $hasFiveRings, $resultInText);
 				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				
+				if ($resultInText == 0){
+				
 				$cutResult = explode(":", $RESULT);
 				
 				$result_json = array('ohm' => $cutResult[0], 'tolerance' => $cutResult[1]);
@@ -321,6 +323,12 @@
 				
 				header('Content-type: application/json');
 				
-				echo json_encode($result.json);
+				echo json_encode($result_json);
+				
+				} else {
+					
+					echo $RESULT;
+					
+					}
 			
 		?>

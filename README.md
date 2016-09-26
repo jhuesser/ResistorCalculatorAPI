@@ -16,8 +16,33 @@ This is an API to calculate the ohm value of resistors with the color code given
 No. If you just want to create a solution, just make your API calls with HTTP POST to ```https://api.jhuesser.ch/rescalcapi.php```
 
 ## What does the result looks like?
-You will get a header and a body. In the body the result is between the ```<RESULT></RESULT>``` tags. If you have a better soloution just let me know.
+If you set ```resultInText```to ```0```, you will recive the result in json. If you set it to ```1``` You recive the standard answer as plain text.
 
+This
+```
+https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=0
+```
+results in this:
+
+```json
+{
+  "ohm": "230000",
+  "tolerance": "+/- 10%"
+}
+
+```
+ and this:
+ ```
+ https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdcolor=yellow&fourthcolor=silver&hasFiveRings=0&resultInText=1
+ 
+```
+
+in this:
+
+```html
+Your resistor has 230000 Ohm. The tolerance is +/- 10%.
+```
+ 
 ## What about translations?
 Your solotion can have any language! Just the HTTP POST values need to be english color names, but in your UI you can show it however you want. The result is between to tags (see above) and contains only the numbers you need. There is an standard prompt in english if you set ```resultInText``` to ```1``` .
 
@@ -46,7 +71,7 @@ Name | Description | requiered
 - yellow
 - green
 - blue
-- violett
+- purple
 - grey
 - white
 
@@ -56,17 +81,12 @@ https://api.jhuesser.ch/rescalcapi.php?firstcolor=red&secondcolor=orange&thirdco
 ```
 
 ## Result from above:
-```html
-<!doctype html>
-	<html>
-		<head>
-			<meta charset="utf-8">
-				<title>Resistor Calculator API</title>
-			</head>
-			<body>
-				<RESULT>230000:+/- 10%</RESULT>
-			</body>
-		</html>
+```json
+{
+  "ohm": "230000",
+  "tolerance": "+/- 10%"
+}
+
 ```
 # Error Codes
 
