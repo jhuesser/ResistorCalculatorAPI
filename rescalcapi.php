@@ -1,13 +1,4 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Resistor Calculator API</title>
-	
-	
-	</head>
-	<body>
-		<?php
+<?php
 		
 			
 			//Initalize values
@@ -320,8 +311,16 @@
 				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
 				$RESULT = caclulateResult($firstvalue, $secondvalue, $thirdvalue, $fourthvalue, $fifthvalue, $hasFiveRings, $resultInText);
 				checkIfError($GLOBALS['hasError'], $GLOBALS['errorNmb'], $GLOBALS['errorMsg']);
-				?><RESULT><?php echo $RESULT;?></RESULT><?php
+				
+				$cutResult = explode(":", $RESULT);
+				
+				$result_json = array('ohm' => $cutResult[0], 'tolerance' => $cutResult[1]);
+				
+				header('Cache-Contoil: no-cache, must-revalidate');
+				header('Expires: Mon 27 Jul 1997 05:00:00 GMT');
+				
+				header('Content-type: application/json');
+				
+				echo json_encode($result.json);
 			
 		?>
-	</body>
-</html>
