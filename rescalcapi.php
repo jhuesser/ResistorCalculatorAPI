@@ -16,7 +16,7 @@
 				}
 			$resultInText=$_GET['resultInText'];
 			$DATE = date(DATE_RFC822);
-			
+			$disclaimer="The author can't guarantee that the results are right. Please check.";
 			
 			//check if error occured
 			
@@ -357,7 +357,7 @@
 				//cut the result at delmiter ":"
 				$cutResult = explode(":", $RESULT);
 				//write the json array
-				$result_json = array('ohm' => $cutResult[0], 'tolerance' => $cutResult[1]);
+				$result_json = array('ohm' => $cutResult[0], 'tolerance' => $cutResult[1], 'disclaimer' => $disclaimer);
 				//write the headers
 				header('Cache-Contoil: no-cache, must-revalidate');
 				header('Expires: ' . $DATE);
@@ -369,7 +369,7 @@
 				
 				} else {
 					//echo text
-					echo $RESULT;
+					echo $RESULT . " " . $disclaimer;
 					
 					}
 			
