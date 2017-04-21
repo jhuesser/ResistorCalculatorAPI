@@ -4,6 +4,8 @@
 - Calculation works.
 - Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1)).
 
+[![Code Climate](https://codeclimate.com/github/jhuesser/ResistorCalculatorAPI/badges/gpa.svg)](https://codeclimate.com/github/jhuesser/ResistorCalculatorAPI)
+[![Issue Count](https://codeclimate.com/github/jhuesser/ResistorCalculatorAPI/badges/issue_count.svg)](https://codeclimate.com/github/jhuesser/ResistorCalculatorAPI)
 
 
 
