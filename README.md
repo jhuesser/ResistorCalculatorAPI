@@ -1,6 +1,6 @@
 # Working status
 
-- Syntax is valiaded.
+- Syntax is validated.
 - Calculation works.
 - Error Handling doesnt work. (See [#1](https://github.com/jhuesser/ResistorCalculatorAPI/issues/1)).
 
@@ -18,7 +18,7 @@ This is an API to calculate the ohm value of resistors with the color code given
 No. If you just want to create a solution, just make your API calls with HTTP POST to ```https://api.widerstandsberechner.ch/api.php```
 
 ## What does the result looks like?
-If you set ```resultInText```to ```0```, you will recive the result in json. If you set it to ```1``` You recive the standard answer as plain text.
+If you set ```resultInText```to ```0```, you will receive the result in json. If you set it to ```1``` You receive the standard answer as plain text.
 
 This
 ```
@@ -51,7 +51,7 @@ Your solotion can have any language! Just the HTTP POST values need to be englis
 # Parameters List
 Here is a list of Parameters. At the end is an example for a API call.
 
-Name | Description | requiered
+Name | Description | required
 -----|-------------|----------
 ```firstcolor``` | The 1st color | yes
 ```secondcolor``` | The 2nd color | yes
@@ -102,21 +102,21 @@ If the Error handling is working in the future, this is an overview for the erro
 
 ## User errors
 
-Error number | Error message | Descriptoon
+Error number | Error message | Description
 -------------|---------------|------------
 101 | The color " . $color . " can't be a color at this position | The API compares the color you give it with a switch case. If the switch fails, this is the error. So your color is invalid, or the color can't be at this position. It will prompt you the color in question.
 
 
 ## Developer errors
 
-Error number | Error message | Descriptoon
+Error number | Error message | Description
 -------------|---------------|------------
 201 | The result could not be generated. Maybe your resultInText request is corrupt. | This error shows up, if the API tests which value ```resultInText``` has. If it's not ```0``` or ```1``` this happens.
 202 | The result could not be calculated. Maybe your hasFiveRings request is corrupt. | If the API checks if the ```hasFiveRings``` value is ```0``` or ```1``` and it's neither of both, this error will show up.
 
 
 ## API errors
-Currently not implemented. will take a look if the error handeling works.
+Currently not implemented. will take a look if the error handling works.
 
-Error number | Error message | Descriptoon
+Error number | Error message | Description
 -------------|---------------|------------
