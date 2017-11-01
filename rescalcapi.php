@@ -18,7 +18,7 @@
 			$DATE = date(DATE_RFC822);
 			$disclaimer="The author can't guarantee that the results are right. Please check.";
 			
-			//check if error occured
+			//check if error occurred
 			
 			function checkIfError($hasError, $errorNmb, $errorMsg){
 				
@@ -87,8 +87,8 @@
 				}
 				
 				
-			function calculateMultipiler($color) {
-				//Multipiler is 3rd or 4th ring, values are the same
+			function calculateMultiplier($color) {
+				//Multiplier is 3rd or 4th ring, values are the same
 				switch($color){
 							
 							case "silver":
@@ -149,8 +149,8 @@
 					$colorvalue = setSecondColorValue($color);
 					
 				} elseif ($hasFiveRings == 0) {
-						//else calculate the multipiler
-					$colorvalue = calculateMultipiler($color);
+						//else calculate the multiplier
+					$colorvalue = calculateMultiplier($color);
 						
 				} else {
 					//on error
@@ -168,10 +168,10 @@
 				
 			
 			function setFourthColorValue($color, $hasFiveRings) {
-				//if 5 rings == true this is the multipiler
+				//if 5 rings == true this is the multiplier
 				if ($hasFiveRings == 1){
 					
-					$colorvalue = calculateMultipiler($color);
+					$colorvalue = calculateMultiplier($color);
 					
 			} elseif ($hasFiveRings == 0) {
 					//else it's the tolerance
@@ -239,7 +239,7 @@
 					//for a 5 ring resistor
 					//put the number together
 					$numberToMultiply = $firstvalue . $secondvalue . $thirdvalue;
-					//multiply that number with the multipiler, this is the ohm value
+					//multiply that number with the multiplier, this is the ohm value
 					$ohm = $numberToMultiply * $fourthvalue;
 					//tolerance is the 5th ring
 					$tolerance = $fifthvalue;
@@ -249,7 +249,7 @@
 						$RESULT="Your resistor has " . $ohm . " Ohm. The tolerance is " . $tolerance . ".";
 						
 						} elseif ($resultInText == 0) {
-							//if user wants json, put a string with : as delmiter togheter.
+							//if user wants json, put a string with : as delimiter together.
 							$RESULT=$ohm . ":" . $tolerance;
 							
 							} else {
@@ -265,7 +265,7 @@
 						//for resistor with 4 rings
 						//put the number together
 						$numberToMultiply = $firstvalue . $secondvalue;
-						//multiply that number with the multipiler, this is the ohm value
+						//multiply that number with the multiplier, this is the ohm value
 						$ohm = $numberToMultiply * $thirdvalue;
 						//tolerance is the 4th ring
 						$tolerance = $fourthvalue;
@@ -276,7 +276,7 @@
 						$RESULT="Your resistor has " . $ohm . " Ohm. The tolerance is " . $tolerance . ".";
 						
 						} elseif ($resultInText == 0) {
-							//if user wants json, put a string with : as delmiter togheter.
+							//if user wants json, put a string with : as delimiter together.
 							$RESULT=$ohm . ":" . $tolerance;
 							
 							} else {
@@ -354,12 +354,12 @@
 				//echo the result
 				if ($resultInText == 0){
 				//if user wants json
-				//cut the result at delmiter ":"
+				//cut the result at delimiter ":"
 				$cutResult = explode(":", $RESULT);
 				//write the json array
 				$result_json = array('ohm' => $cutResult[0], 'tolerance' => $cutResult[1], 'disclaimer' => $disclaimer);
 				//write the headers
-				header('Cache-Contoil: no-cache, must-revalidate');
+				header('Cache-Control: no-cache, must-revalidate');
 				header('Expires: ' . $DATE);
 				
 				
